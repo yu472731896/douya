@@ -68,7 +68,7 @@ public class FrontController extends BaseController{
 		model.addAttribute("site", site);
 		model.addAttribute("isIndex", true);
 		/*return "modules/cms/front/themes/"+site.getTheme()+"/frontIndex";*/
-		return "modules/novel/login";
+		return "modules/novel/index";
 	}
 	
 	/**

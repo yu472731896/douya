@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.thinkgem.jeesite.modules.base.dao.BaseChaptersDao">
+    
+	<sql id="baseChaptersColumns">
+		a.id AS "id",
+		a.create_by AS "createBy.id",
+		a.create_date AS "createDate",
+		a.update_by AS "updateBy.id",
+		a.update_date AS "updateDate",
+		a.remarks AS "remarks",
+		a.del_flag AS "delFlag",
+		a.scroll_id AS "baseScroll.id",
+		a.novel_id AS "baseNovel.id",
+		a.name AS "name",
+		a.content AS "content",
+		a.word_count AS "wordCount",
+		a.leave_word AS "leaveWord"
+	</sql>
+	
+	<sql id="baseChaptersJoins">
+	</sql>
+    
+	<select id="get" resultType="BaseChapters">
+		SELECT 
+			<include refid="baseChaptersColumns"/>
+		FROM base_chapters a
+		<include refid="baseChaptersJoins"/>
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="findList" resultType="BaseChapters">
+		SELECT 
+			<include refid="baseChaptersColumns"/>
+		FROM base_chapters a
+		<include refid="baseChaptersJoins"/>
+		<where>
+			a.del_flag = #{DEL_FLAG_NORMAL}
+			<if test="name != null and name != ''">
+				AND a.name LIKE 
+					<if test="dbName == 'oracle'">'%'||#{name}||'%'</if>
+					<if test="dbName == 'mssql'">'%'+#{name}+'%'</if>
+					<if test="dbName == 'mysql'">concat('%',#{name},'%')</if>
+			</if>
+		</where>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY a.update_date DESC
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findAllList" resultType="BaseChapters">
+		SELECT 
+			<include refid="baseChaptersColumns"/>
+		FROM base_chapters a
+		<include refid="baseChaptersJoins"/>
+		<where>
+			a.del_flag = #{DEL_FLAG_NORMAL}
+		</where>		
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY a.update_date DESC
+			</otherwise>
+		</choose>
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO base_chapters(
+			id,
+			create_by,
+			create_date,
+			update_by,
+			update_date,
+			remarks,
+			del_flag,
+			scroll_id,
+			novel_id,
+			name,
+			content,
+			word_count,
+			leave_word
+		) VALUES (
+			#{id},
+			#{createBy.id},
+			#{createDate},
+			#{updateBy.id},
+			#{updateDate},
+			#{remarks},
+			#{delFlag},
+			#{baseScroll.id},
+			#{baseNovel.id},
+			#{name},
+			#{content},
+			#{wordCount},
+			#{leaveWord}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE base_chapters SET 	
+			update_by = #{updateBy.id},
+			update_date = #{updateDate},
+			remarks = #{remarks},
+			scroll_id = #{baseScroll.id},
+			novel_id = #{baseNovel.id},
+			name = #{name},
+			content = #{content},
+			word_count = #{wordCount},
+			leave_word = #{leaveWord}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		UPDATE base_chapters SET 
+			del_flag = #{DEL_FLAG_DELETE}
+		WHERE id = #{id}
+	</update>
+	
+</mapper>

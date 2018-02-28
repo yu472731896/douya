@@ -46,8 +46,8 @@
 			<label id="loginError" class="error">${message}</label>
 		</div>
 	</div>
-	<h1 class="form-signin-heading">${fns:getConfig('productName')}</h1>
-	<form id="loginForm" class="form-signin" action="${ctx}/login" method="post">
+	<h1 class="form-signin-heading"><%-- ${fns:getConfig('productName')} --%> </h1>
+	<form id="loginForm" class="form-signin" action="${fctx}/login" method="post">
 		<label class="input-label" for="username">登录名</label>
 		<input type="text" id="username" name="username" class="input-block-level required" value="${username}">
 		<label class="input-label" for="password">密码</label>

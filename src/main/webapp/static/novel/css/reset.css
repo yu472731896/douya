@@ -1,0 +1,298 @@
+/*common*/
+@charset "utf-8";
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+font,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}
+
+* {
+	font-family: "PingHei", "PingFang SC", Arial, "FZLanTingHei-R-GBK", 方正兰亭黑, "Microsoft YaHei", 微软雅黑, STHeiti, 华文黑体, SimSun, 宋体, sans-serif, "Myriad Pro";
+	font-size: 14px;
+}
+
+
+/*:lang(zh-CN) {
+	font-family: "HanHei SC", "PingHei", "PingFang SC", 微软雅黑, "STHeitiSC-Light", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}*/
+
+ol,
+ul {
+	list-style: none;
+}
+
+blockquote,
+q {
+	quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+	content: '';
+	content: none;
+}
+
+
+/* remember to define focus styles! */
+
+:focus {
+	outline: 0;
+}
+
+
+/* remember to highlight inserts somehow! */
+
+ins {
+	text-decoration: none;
+}
+
+del {
+	text-decoration: line-through;
+}
+a{
+	color: #4C4C4C;
+	text-decoration: none;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+fieldset,
+img {
+	border: 0;
+}
+
+.imgs {
+	width: 100%;
+	vertical-align: middle;
+}
+
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+strong,
+th,
+var {
+	font-style: normal;
+	font-weight: normal;
+}
+
+ol,
+ul {
+	list-style: none;
+}
+
+caption,
+th {
+	text-align: left;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-size: 100%;
+	font-weight: normal;
+}
+
+q:before,
+q:after {
+	content: '';
+}
+
+abbr,
+acronym {
+	border: 0;
+}
+
+input,
+textarea {
+	outline: none;
+	resize: none;
+}
+
+.operate_disable {
+	color: #9aa5c2!important;
+	cursor: not-allowed!important;
+}
+
+
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+
+::-webkit-scrollbar {
+	width: 8px;
+	background-color: none;
+}
+
+
+/*定义滚动条轨道 内阴影+圆角*/
+
+::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+
+/*定义滑块 内阴影+圆角*/
+
+::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+	background-color: #1260a2;
+	;
+}
+
+
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+
+body::-webkit-scrollbar {
+	width: 16px;
+	background-color: none;
+}
+
+
+/*定义滚动条轨道 内阴影+圆角*/
+
+body::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+
+/*定义滑块 内阴影+圆角*/
+
+body::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+	background-color: #0b3e7f;
+}
+
+
+/*文字换行*/
+
+* {
+	text-overflow: ellipsis;
+	word-break: break-all;
+	word-wrap: break-word;
+}
+
+.text_ellipsis {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+pre {
+	width: 1180px;
+	overflow-x: hidden;
+	color: #fff;
+	white-space: pre-wrap;
+	/* css-3 */
+	white-space: -moz-pre-wrap;
+	/* Mozilla, since 1999 */
+	white-space: -pre-wrap;
+	/* Opera 4-6 */
+	white-space: -o-pre-wrap;
+	/* Opera 7 */
+	word-wrap: break-word;
+	/* Internet Explorer 5.5+ */
+	line-height: 30px;
+	font-family: "PingHei", "PingFang SC", Arial, "FZLanTingHei-R-GBK", 方正兰亭黑, "Microsoft YaHei", 微软雅黑, STHeiti, 华文黑体, SimSun, 宋体, sans-serif, "Myriad Pro";
+}
+
+
+/*旋转*/
+
+.rotate {
+	-webkit-transform: rotate(-90deg);
+	-moz-transform: rotate(-90deg);
+	filter: progid: DXImageTransform.Microsoft.BasicImage(rotation=3);
+}
+
+/*修改chrome记住密码后自动填充表单的黄色背景*/
+input:-webkit-autofill {
+  	-webkit-box-shadow : 0 0 0px 1000px white inset ;
+}
+
+html,
+body {
+	min-height: 100%;
+}

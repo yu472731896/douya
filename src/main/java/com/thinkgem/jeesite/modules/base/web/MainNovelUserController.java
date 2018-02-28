@@ -33,8 +33,8 @@ import com.thinkgem.jeesite.modules.sys.utils.UserUtils;
  * @version 2018-02-22
  */
 @Controller
-@RequestMapping(value = "${adminPath}/base/baseNovelUser")
-public class BaseNovelUserController extends BaseController {
+@RequestMapping(value = "${frontPath}/base/baseNovelUser")
+public class MainNovelUserController extends BaseController {
 
 	@Autowired
 	private BaseNovelUserService baseNovelUserService;
@@ -92,31 +92,5 @@ public class BaseNovelUserController extends BaseController {
 	/***************************************以上为监管端******************************************/
 	
 	/***************************************下面为用户端******************************************/
-	
-	@RequestMapping(value = "login", method = RequestMethod.GET)
-	public String login(HttpServletRequest request, HttpServletResponse response, Model model) {
-		Principal principal = UserUtils.getPrincipal();
-
-//		// 默认页签模式
-//		String tabmode = CookieUtils.getCookie(request, "tabmode");
-//		if (tabmode == null){
-//			CookieUtils.setCookie(response, "tabmode", "1");
-//		}
-		
-		if (logger.isDebugEnabled()){
-			logger.debug("login, active session size: {}", sessionDAO.getActiveSessions(false).size());
-		}
-		
-		// 如果已登录，再次访问主页，则退出原账号。
-		if (Global.TRUE.equals(Global.getConfig("notAllowRefreshIndex"))){
-			CookieUtils.setCookie(response, "LOGINED", "false");
-		}
-		
-		// 如果已经登录，则跳转到管理首页
-		if(principal != null && !principal.isMobileLogin()){
-			return "redirect:" + frontPath;
-		}
-		return "modules/sys/sysLogin";
-	}
 
 }

@@ -27,6 +27,8 @@ import com.thinkgem.jeesite.common.utils.CookieUtils;
 import com.thinkgem.jeesite.common.utils.IdGen;
 import com.thinkgem.jeesite.common.utils.StringUtils;
 import com.thinkgem.jeesite.common.web.BaseController;
+import com.thinkgem.jeesite.modules.base.entity.BaseNovelUser;
+import com.thinkgem.jeesite.modules.sys.entity.User;
 import com.thinkgem.jeesite.modules.sys.security.FormAuthenticationFilter;
 import com.thinkgem.jeesite.modules.sys.security.SystemAuthorizingRealm.Principal;
 import com.thinkgem.jeesite.modules.sys.utils.UserUtils;
@@ -45,13 +47,8 @@ public class LoginController extends BaseController{
 	
 	//小说平台登陆
 	@RequestMapping(value = "${frontPath}/login", method = RequestMethod.GET)
-	public String loginUser(HttpServletRequest request, HttpServletResponse response, Model model) {
+	public String loginUser(User user,HttpServletRequest request, HttpServletResponse response, Model model) {
 		Principal principal = UserUtils.getPrincipal();
-//			// 默认页签模式
-//			String tabmode = CookieUtils.getCookie(request, "tabmode");
-//			if (tabmode == null){
-//				CookieUtils.setCookie(response, "tabmode", "1");
-//			}
 		
 		if (logger.isDebugEnabled()){
 			logger.debug("login, active session size: {}", sessionDAO.getActiveSessions(false).size());
@@ -66,8 +63,75 @@ public class LoginController extends BaseController{
 		if(principal != null && !principal.isMobileLogin()){
 			return "redirect:" + frontPath;
 		}
-		return "modules/novel/login";
+		
+		model.addAttribute("user", user);
+		return "modules/novel/user_login";
 	}
+	
+	/**
+	 * 登录失败，真正登录的POST请求由Filter完成
+	 */
+	@RequestMapping(value = "${frontPath}/login", method = RequestMethod.POST)
+	public String novelLoginFail(HttpServletRequest request, HttpServletResponse response, Model model) {
+		Principal principal = UserUtils.getPrincipal();
+		
+		// 如果已经登录，则跳转到管理首页
+		if(principal != null){
+			return "redirect:" + frontPath;
+		}
+
+		String username = WebUtils.getCleanParam(request, FormAuthenticationFilter.DEFAULT_USERNAME_PARAM);
+		boolean rememberMe = WebUtils.isTrue(request, FormAuthenticationFilter.DEFAULT_REMEMBER_ME_PARAM);
+		boolean mobile = WebUtils.isTrue(request, FormAuthenticationFilter.DEFAULT_MOBILE_PARAM);
+		String exception = (String)request.getAttribute(FormAuthenticationFilter.DEFAULT_ERROR_KEY_ATTRIBUTE_NAME);
+		String message = (String)request.getAttribute(FormAuthenticationFilter.DEFAULT_MESSAGE_PARAM);
+		
+		if (StringUtils.isBlank(message) || StringUtils.equals(message, "null")){
+			message = "用户或密码错误, 请重试.";
+		}
+
+		model.addAttribute(FormAuthenticationFilter.DEFAULT_USERNAME_PARAM, username);
+		model.addAttribute(FormAuthenticationFilter.DEFAULT_REMEMBER_ME_PARAM, rememberMe);
+		model.addAttribute(FormAuthenticationFilter.DEFAULT_MOBILE_PARAM, mobile);
+		model.addAttribute(FormAuthenticationFilter.DEFAULT_ERROR_KEY_ATTRIBUTE_NAME, exception);
+		model.addAttribute(FormAuthenticationFilter.DEFAULT_MESSAGE_PARAM, message);
+		
+		if (logger.isDebugEnabled()){
+			logger.debug("login fail, active session size: {}, message: {}, exception: {}", 
+					sessionDAO.getActiveSessions(false).size(), message, exception);
+		}
+		
+		// 非授权异常，登录失败，验证码加1。
+		if (!UnauthorizedException.class.getName().equals(exception)){
+			model.addAttribute("isValidateCodeLogin", isValidateCodeLogin(username, true, false));
+		}
+		
+		// 验证失败清空验证码
+		request.getSession().setAttribute(ValidateCodeServlet.VALIDATE_CODE, IdGen.uuid());
+		
+		// 如果是手机登录，则返回JSON字符串
+		if (mobile){
+	        return renderString(response, model);
+		}
+		
+		return "modules/novel/index";
+	}
+
+	
+	
+	
+	
+	
+	
+	/************************************************************************************************************************/
+	
+	
+	
+	
+	
+	
+	
+	/************************************************************************************************************************/
 	
 	
 	/**

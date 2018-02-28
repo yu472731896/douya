@@ -10,38 +10,38 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.thinkgem.jeesite.common.persistence.Page;
 import com.thinkgem.jeesite.common.service.CrudService;
-import com.thinkgem.jeesite.modules.base.entity.BaseNovel;
-import com.thinkgem.jeesite.modules.base.dao.BaseNovelDao;
+import com.thinkgem.jeesite.modules.base.entity.BaseScroll;
+import com.thinkgem.jeesite.modules.base.dao.BaseScrollDao;
 
 /**
- * 小说基本表Service
+ * 卷Service
  * @author minghui
  * @version 2018-02-28
  */
 @Service
 @Transactional(readOnly = true)
-public class BaseNovelService extends CrudService<BaseNovelDao, BaseNovel> {
+public class BaseScrollService extends CrudService<BaseScrollDao, BaseScroll> {
 
-	public BaseNovel get(String id) {
+	public BaseScroll get(String id) {
 		return super.get(id);
 	}
 	
-	public List<BaseNovel> findList(BaseNovel baseNovel) {
-		return super.findList(baseNovel);
+	public List<BaseScroll> findList(BaseScroll baseScroll) {
+		return super.findList(baseScroll);
 	}
 	
-	public Page<BaseNovel> findPage(Page<BaseNovel> page, BaseNovel baseNovel) {
-		return super.findPage(page, baseNovel);
-	}
-	
-	@Transactional(readOnly = false)
-	public void save(BaseNovel baseNovel) {
-		super.save(baseNovel);
+	public Page<BaseScroll> findPage(Page<BaseScroll> page, BaseScroll baseScroll) {
+		return super.findPage(page, baseScroll);
 	}
 	
 	@Transactional(readOnly = false)
-	public void delete(BaseNovel baseNovel) {
-		super.delete(baseNovel);
+	public void save(BaseScroll baseScroll) {
+		super.save(baseScroll);
+	}
+	
+	@Transactional(readOnly = false)
+	public void delete(BaseScroll baseScroll) {
+		super.delete(baseScroll);
 	}
 	
 }

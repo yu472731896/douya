@@ -2,7 +2,7 @@
 <%@ include file="/WEB-INF/views/include/taglib.jsp"%>
 <html>
 <head>
-	<title>小说用户表信息表管理</title>
+	<title>小说基本表管理</title>
 	<meta name="decorator" content="default"/>
 	<script type="text/javascript">
 		$(document).ready(function() {
@@ -27,8 +27,8 @@
 </head>
 <body>
 	<ul class="nav nav-tabs">
-		<li><a href="${ctx}/base/baseNovel/">小说用户表信息表列表</a></li>
-		<li class="active"><a href="${ctx}/base/baseNovel/form?id=${baseNovel.id}">小说用户表信息表<shiro:hasPermission name="base:baseNovel:edit">${not empty baseNovel.id?'修改':'添加'}</shiro:hasPermission><shiro:lacksPermission name="base:baseNovel:edit">查看</shiro:lacksPermission></a></li>
+		<li><a href="${ctx}/base/baseNovel/">小说基本表列表</a></li>
+		<li class="active"><a href="${ctx}/base/baseNovel/form?id=${baseNovel.id}">小说基本表<shiro:hasPermission name="base:baseNovel:edit">${not empty baseNovel.id?'修改':'添加'}</shiro:hasPermission><shiro:lacksPermission name="base:baseNovel:edit">查看</shiro:lacksPermission></a></li>
 	</ul><br/>
 	<form:form id="inputForm" modelAttribute="baseNovel" action="${ctx}/base/baseNovel/save" method="post" class="form-horizontal">
 		<form:hidden path="id"/>
@@ -74,7 +74,8 @@
 		<div class="control-group">
 			<label class="control-label">图片：</label>
 			<div class="controls">
-				<form:input path="path" htmlEscape="false" maxlength="255" class="input-xlarge "/>
+				<form:hidden id="path" path="path" htmlEscape="false" maxlength="255" class="input-xlarge"/>
+				<sys:ckfinder input="path" type="files" uploadPath="/base/baseNovel" selectMultiple="true"/>
 			</div>
 		</div>
 		<div class="control-group">

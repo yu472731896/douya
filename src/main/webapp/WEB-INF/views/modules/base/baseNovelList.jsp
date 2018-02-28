@@ -2,7 +2,7 @@
 <%@ include file="/WEB-INF/views/include/taglib.jsp"%>
 <html>
 <head>
-	<title>小说用户表信息表管理</title>
+	<title>小说基本表管理</title>
 	<meta name="decorator" content="default"/>
 	<script type="text/javascript">
 		$(document).ready(function() {
@@ -18,8 +18,8 @@
 </head>
 <body>
 	<ul class="nav nav-tabs">
-		<li class="active"><a href="${ctx}/base/baseNovel/">小说用户表信息表列表</a></li>
-		<shiro:hasPermission name="base:baseNovel:edit"><li><a href="${ctx}/base/baseNovel/form">小说用户表信息表添加</a></li></shiro:hasPermission>
+		<li class="active"><a href="${ctx}/base/baseNovel/">小说基本表列表</a></li>
+		<shiro:hasPermission name="base:baseNovel:edit"><li><a href="${ctx}/base/baseNovel/form">小说基本表添加</a></li></shiro:hasPermission>
 	</ul>
 	<form:form id="searchForm" modelAttribute="baseNovel" action="${ctx}/base/baseNovel/" method="post" class="breadcrumb form-search">
 		<input id="pageNo" name="pageNo" type="hidden" value="${page.pageNo}"/>
@@ -56,7 +56,7 @@
 				</td>
 				<shiro:hasPermission name="base:baseNovel:edit"><td>
     				<a href="${ctx}/base/baseNovel/form?id=${baseNovel.id}">修改</a>
-					<a href="${ctx}/base/baseNovel/delete?id=${baseNovel.id}" onclick="return confirmx('确认要删除该小说用户表信息表吗？', this.href)">删除</a>
+					<a href="${ctx}/base/baseNovel/delete?id=${baseNovel.id}" onclick="return confirmx('确认要删除该小说基本表吗？', this.href)">删除</a>
 				</td></shiro:hasPermission>
 			</tr>
 		</c:forEach>

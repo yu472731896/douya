@@ -38,7 +38,7 @@ public class User extends DataEntity<User> {
 	private String email;	// 邮箱
 	private String phone;	// 电话
 	private String mobile;	// 手机
-	private String userType;// 用户类型
+	private String userType;// 用户类型 小说用户8 作者9
 	private String loginIp;	// 最后登陆IP
 	private Date loginDate;	// 最后登陆日期
 	private String loginFlag;	// 是否允许登陆
@@ -51,6 +51,10 @@ public class User extends DataEntity<User> {
 	private Date oldLoginDate;	// 上次登陆日期
 	
 	private Role role;	// 根据角色查询用户条件
+	
+	//添加 
+	private Area area;	// 归属部门
+	
 	
 	private List<Role> roleList = Lists.newArrayList(); // 拥有角色列表
 
@@ -272,6 +276,14 @@ public class User extends DataEntity<User> {
 
 	public void setRole(Role role) {
 		this.role = role;
+	}
+	
+	public Area getArea() {
+		return area;
+	}
+
+	public void setArea(Area area) {
+		this.area = area;
 	}
 
 	@JsonIgnore

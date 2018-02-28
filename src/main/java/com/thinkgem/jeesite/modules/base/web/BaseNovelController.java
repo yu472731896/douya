@@ -23,9 +23,9 @@ import com.thinkgem.jeesite.modules.base.entity.BaseNovel;
 import com.thinkgem.jeesite.modules.base.service.BaseNovelService;
 
 /**
- * 小说用户表信息表Controller
+ * 小说基本表Controller
  * @author minghui
- * @version 2018-02-22
+ * @version 2018-02-28
  */
 @Controller
 @RequestMapping(value = "${adminPath}/base/baseNovel")
@@ -68,7 +68,7 @@ public class BaseNovelController extends BaseController {
 			return form(baseNovel, model);
 		}
 		baseNovelService.save(baseNovel);
-		addMessage(redirectAttributes, "保存小说用户表信息表成功");
+		addMessage(redirectAttributes, "保存小说基本表成功");
 		return "redirect:"+Global.getAdminPath()+"/base/baseNovel/?repage";
 	}
 	
@@ -76,11 +76,8 @@ public class BaseNovelController extends BaseController {
 	@RequestMapping(value = "delete")
 	public String delete(BaseNovel baseNovel, RedirectAttributes redirectAttributes) {
 		baseNovelService.delete(baseNovel);
-		addMessage(redirectAttributes, "删除小说用户表信息表成功");
+		addMessage(redirectAttributes, "删除小说基本表成功");
 		return "redirect:"+Global.getAdminPath()+"/base/baseNovel/?repage";
 	}
-	
-	
-	
 
 }

@@ -10,9 +10,9 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.thinkgem.jeesite.common.persistence.DataEntity;
 
 /**
- * 小说用户表信息表Entity
+ * 小说基本表Entity
  * @author minghui
- * @version 2018-02-22
+ * @version 2018-02-28
  */
 public class BaseNovel extends DataEntity<BaseNovel> {
 	

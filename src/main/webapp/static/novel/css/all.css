@@ -1,0 +1,65 @@
+body {
+	background: #fdf6ee;
+}
+.common_btn{
+	display: block;
+	margin: 40px auto;
+	padding: 4px 50px;
+	color: #fff;
+	background: #b5db62;
+	border: none;
+	line-height: 2em;
+	font-size: 1.2em;
+	border-radius: 6px;
+	letter-spacing: 2px;
+}
+/*登录*/
+.bg_login{
+	background-image: url(../img/bg_login.jpg);
+	background-size: cover;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+}
+.user_login_box{
+	width: 400px;
+	margin: 12% auto 3%;
+	line-height: 3.6em;
+	padding: 60px 30px 20px;
+	box-sizing: border-box;
+	border-radius: 12px;
+	background: rgba(255, 255, 255, 0.63);
+}
+.login_title{
+	font-size: 1.4em;
+	font-weight: bold;
+	color: #5c5c5c;
+	text-align: center;
+	letter-spacing: 4px;
+}
+.user_login_box input{
+	padding: 0 6px;
+	width: 100%;
+	line-height: 2.6em;
+	border-radius: 6px;
+	font-size: 1.0em;
+	box-sizing: border-box;
+	border: 1px solid #b5db62;
+	background: rgba(255, 255, 255, 0.63);
+}
+.small_operation{
+	font-size: 0.8em;
+	line-height: 1em;
+	padding: 0 4px;
+}
+/*首页*/
+.nav_logo{
+	width: 5%;
+}
+/*手机适配*/
+@media only screen and (min-width: 300px) and (max-width: 800px) {
+	.user_login_box{
+		width: 100%;
+		line-height: 4.0em;
+		background:none;
+	}
+}
