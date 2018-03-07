@@ -481,7 +481,7 @@
 }
 
 #slide .swiper-slide img {
-	max-width: 100%;
+	width: 100%;
 	min-height: 173px;
 }
 
@@ -507,5 +507,5 @@
 }
 
 #slide .swiper-pagination-bullet-active {
-	background: #ebd206;
+	background: #b5db62;
 }

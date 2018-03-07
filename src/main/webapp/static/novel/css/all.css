@@ -1,7 +1,16 @@
 body {
 	background: #fdf6ee;
 }
-.common_btn{
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+.common_btn {
 	display: block;
 	margin: 40px auto;
 	padding: 4px 50px;
@@ -13,14 +22,18 @@ body {
 	border-radius: 6px;
 	letter-spacing: 2px;
 }
+
+
 /*登录*/
-.bg_login{
+
+.bg_login {
 	background-image: url(../img/bg_login.jpg);
 	background-size: cover;
 	background-attachment: fixed;
 	background-repeat: no-repeat;
 }
-.user_login_box{
+
+.user_login_box {
 	width: 400px;
 	margin: 12% auto 3%;
 	line-height: 3.6em;
@@ -29,14 +42,16 @@ body {
 	border-radius: 12px;
 	background: rgba(255, 255, 255, 0.63);
 }
-.login_title{
+
+.login_title {
 	font-size: 1.4em;
 	font-weight: bold;
 	color: #5c5c5c;
 	text-align: center;
 	letter-spacing: 4px;
 }
-.user_login_box input{
+
+.user_login_box input {
 	padding: 0 6px;
 	width: 100%;
 	line-height: 2.6em;
@@ -46,20 +61,245 @@ body {
 	border: 1px solid #b5db62;
 	background: rgba(255, 255, 255, 0.63);
 }
-.small_operation{
+
+.small_operation {
 	font-size: 0.8em;
 	line-height: 1em;
 	padding: 0 4px;
 }
+
+
 /*首页*/
-.nav_logo{
-	width: 5%;
+
+.content_left {
+	width: 76%!important;
+	float: left;
+}
+.content_right{
+	width: 23%;
+	float: right;
+}
+.nav {
+	background: #b5db62;
+	padding: 0 10%;
+	height: 120px;
+}
+
+.nav_logo {
+	float: left;
+	width: 80px;
+	margin: 20px 30px 20px 0;
+}
+
+.nav_link {
+	text-align: center;
+	font-size: 1.6em;
+	color: #fff;
+	display: inline-block;
+	line-height: 40px;
+	margin: 40px 20px;
+	padding: 0 16px;
+}
+
+.link_right {
+	float: right;
+}
+
+.nav_link:hover {
+	border-bottom: 4px solid #fff;
+}
+
+.link_right:hover {
+	border: none;
+}
+
+.index_footer_copyright {
+	clear: both;
+	width: 100%;
+	height: 10%;
+	line-height: 90px;
+	border-top: 4px solid #b5db62;
+	margin-top: 60px;
+	letter-spacing: 2px;
+	text-align: center;
+}
+
+.page_content {
+	width: 80%;
+	margin: 20px 10%;
+	overflow: hidden;
+}
+
+
+/*榜单*/
+
+.rank_list {
+	border: #ececec solid 1px;
+	background: #f3f3f3;
+	font-size: 0.9em;
+	line-height: 2em;
+	padding: 6px 10px;
+	margin-bottom: 20px;
+}
+
+.rank_title {
+	padding: 6px 0;
+	border-bottom: #e5e5e5 solid 1px;
+}
+
+.rank_book_info {
+	overflow: hidden;
+	padding: 12px 0 7px;
+	border-bottom: #e5e5e5 solid 1px;
+}
+
+.rank_book_info:last-child {
+	border-bottom: none;
+}
+
+.rank_num {
+	display: inline-block;
+	width: 8%;
+	float: left;
+	vertical-align: top;
+}
+
+.rank_hover .rank_num {
+	color: #c9483c;
+}
+
+.rank_bookcover {
+	width: 0;
+}
+
+.rank_hover .rank_bookcover {
+	width: 25%;
+	margin-left: 1%;
+}
+
+.rank_book_name {
+	width: 90%;
+	margin-left: 1%;
+	display: inline-block;
+	float: right;
+}
+
+.rank_hover .rank_book_name {
+	width: 62%;
+}
+
+.book_abstract {
+	font-weight: 300;
+	display: none;
+}
+
+.rank_hover .book_abstract {
+	display: block;
+}
+
+
+/*编辑推荐*/
+
+.recommend_box {
+	clear: both;
+	padding: 6px;
+}
+
+.title_border {
+	padding-top: 40px;
+	font-size: 1.2em;
+	border-bottom: 1px solid #575757;
+}
+
+.recommend_box_list {
+	width: 33.33%;
+	float: left;
+	margin: 2% 0 0 0;
+	padding: 6px;
+	box-sizing: border-box;
+}
+
+.recommend_box_list:hover {
+	box-shadow: 0 0 8px 3px rgba(88, 182, 216, 0.38);
+	-moz-box-shadow: 0 0 8px 3px rgba(88, 182, 216, 0.38);
+	-webkit-box-shadow: 0 0 8px 3px rgba(88, 182, 216, 0.38);
+}
+
+.recommend_box_bookcover {
+	width: 35%;
+	float: left;
+}
+
+.recommend_box_book_info {
+	width: 61%;
+	float: left;
+	padding-left: 2%;
+}
+
+.recommend_book_abstract {
+	font-size: 0.9em;
+	font-weight: 400;
+	margin: 10px 0;
+}
+
+.recommend_book_author {
+	color: #a9a9a9;
+	font-size: 0.9em;
+}
+/*精品图书*/
+.competitive_box{
+	
+}
+.competitive_box_list{
+	position: relative;
+	width: 20%;
+}
+.competitive_box_list_bookcover{
+	width: 70%;
+	margin: 50px 15% 0;
+}
+.competitive_box_list_book_name{
+	text-align: center;
+	max-width: 70%;
+	margin: 0 15%;
+	overflow: hidden;
+	height: 1.2em;
+}
+.competitive_author{
+	position: absolute;
+	top: 25px;
+	left: 6%;
+	z-index: 3;
+}
+.competitive_author img{
+	width: 40px;
+	border-radius: 50%;
+	border: 4px solid #fff;
+}
+.competitive_author span{
+    margin: 6px;
+    vertical-align: top;
+    display: inline-block;
+}
+/*最近更新*/
+.competitive_box table{
+	width: 100%;
+	margin-top: 20px;
+}
+.competitive_box table,.competitive_box th{
+	text-align: center;	
+	line-height: 2em;
+	border-bottom: 1px solid #ddd;
+}
+.competitive_box table tr:nth-child(odd){
+	background: #ddd;
 }
 /*手机适配*/
+
 @media only screen and (min-width: 300px) and (max-width: 800px) {
-	.user_login_box{
+	.user_login_box {
 		width: 100%;
 		line-height: 4.0em;
-		background:none;
+		background: none;
 	}
 }

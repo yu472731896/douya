@@ -44,8 +44,7 @@ public class LoginController extends BaseController{
 	@Autowired
 	private SessionDAO sessionDAO;
 	
-	
-	//小说平台登陆
+		//小说平台登陆
 	@RequestMapping(value = "${frontPath}/login", method = RequestMethod.GET)
 	public String loginUser(User user,HttpServletRequest request, HttpServletResponse response, Model model) {
 		Principal principal = UserUtils.getPrincipal();
